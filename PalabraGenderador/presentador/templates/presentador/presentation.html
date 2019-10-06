@@ -1,0 +1,51 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/presentation.css' %}">
+<!-- Google Font -->
+<link href='https://fonts.googleapis.com/css?family=Erica+One' rel='stylesheet' type='text/css'>
+<!-- jQuery Libraru -->
+<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js?ver=1.4.2'></script>
+<script> 
+function playSound(url) {
+    var a = new Audio(url);
+    a.play();
+}
+
+  (function(){
+   var mp3s = [
+         {% for id, sound in sounds.items %}
+           '{{ sound }}',
+         {% endfor %}
+       ], x = 0;
+   var englishwords = [
+         {% for text in englishwords %}
+           '{{ text }}',
+         {% endfor %}
+       ], i = 0;
+   var spanishwords = [
+         {% for text in spanishwords %}
+           '{{ text }}',
+         {% endfor %}
+       ], y = 0;
+   setInterval(function(){
+
+       $('#changingword').fadeOut(function(){
+           //playSound(mp3s[x=(x+1)%mp3s.length]);
+           $(this).html(spanishwords[y=(y+1)%spanishwords.length]).fadeIn();
+       });
+   }, 10000);
+   setInterval(function(){
+
+       $('#englishword').fadeOut(function(){
+           //playSound(mp3s[x=(x+1)%mp3s.length]);
+           $(this).html(englishwords[i=(i+1)%englishwords.length]).fadeIn();
+       });
+   }, 10000);
+     
+   })();
+</script>
+<!-- h1 tag with span ID for changing words  -->
+<h1>
+    <span id="englishword">Gardener</span>
+    <span id="changingword">Gardener</span>
+</h1>
+
