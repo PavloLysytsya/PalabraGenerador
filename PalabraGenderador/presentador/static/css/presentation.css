@@ -1,7 +1,9 @@
 h1 {
   font-size:130px;
   text-align:center;
-  font-family: 'Erica One', cursive;
+  font-family: 'Anton', sans-serif;
+  line-height: 1;
+  letter-spacing: -.07em;
   padding: 15% 0;
 }
 
